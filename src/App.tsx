@@ -6,7 +6,7 @@ import {
   createTheme,
   ThemeProvider
 } from '@material-ui/core'
-import { lightBlue } from '@material-ui/core/colors'
+import { lightBlue, purple } from '@material-ui/core/colors'
 
 import Header from './components/Header/Header'
 import List from './components/List/List'
@@ -17,9 +17,7 @@ import { ICity, ICoordinates } from './interface'
 
 const theme = createTheme({
   palette: {
-    primary: {
-      main: '#fefefe'
-    },
+    primary: purple,
     secondary: lightBlue
   }
 })
@@ -32,20 +30,25 @@ const App = () => {
   })
   const [continents, setContinents] = useState<string[]>([])
   const [selectedContinent, setSelectedContinent] = useState<string>('')
+  const [isLoading, setIsLoading] = useState<boolean>(false)
 
   useEffect(() => {
+    setIsLoading(true)
     getContinents().then((response: string[] | undefined) => {
       setContinents(response!)
+      setIsLoading(false)
     })
   }, [])
 
   useEffect(() => {
+    setIsLoading(true)
     getCities(selectedContinent).then((response: ICity[] | undefined) => {
       setCities(response!)
       setCoordinates({
         lat: Number(response![0].latitude),
         lng: Number(response![0].longitude)
       })
+      setIsLoading(false)
     })
   }, [selectedContinent])
 
@@ -60,6 +63,7 @@ const App = () => {
               continents={continents}
               selectedContinent={selectedContinent}
               setSelectedContinent={setSelectedContinent}
+              isLoading={isLoading}
             />
           </Grid>
           <Grid item xs={12} md={8}>
