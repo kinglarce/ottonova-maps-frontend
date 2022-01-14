@@ -15,8 +15,7 @@ const Map: FC = (): ReactElement => {
         center={coordinates}
         defaultZoom={14}
         margin={[50, 50, 50, 50]}
-      >
-      </GoogleMapReact>
+      ></GoogleMapReact>
     </div>
   )
 }

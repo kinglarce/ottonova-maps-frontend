@@ -1,6 +1,11 @@
 import React from 'react'
 
-import { CssBaseline, Grid, createTheme, ThemeProvider } from '@material-ui/core'
+import {
+  CssBaseline,
+  Grid,
+  createTheme,
+  ThemeProvider
+} from '@material-ui/core'
 import { lightBlue } from '@material-ui/core/colors'
 
 import Header from './components/Header/Header'
