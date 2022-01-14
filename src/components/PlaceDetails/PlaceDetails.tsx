@@ -25,7 +25,7 @@ const PlaceDetails: FC<PlaceDetailsProps> = ({ city }): ReactElement => {
     <Card elevation={6}>
       <CardMedia
         style={{ height: 300 }}
-        image="/sample-card-image.jpg"
+        image={`/images/${city.name.replace(/\s/g, '')}.jpeg`}
         title={city.name}
       />
       <CardContent>

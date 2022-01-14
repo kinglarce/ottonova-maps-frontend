@@ -71,7 +71,7 @@ const Map: FC<MapProps> = ({
                   </Typography>
                   <img
                     className={classes.pointer}
-                    src="/sample-card-image.jpg"
+                    src={`/images/${city.name.replace(/\s/g, '')}.jpeg`}
                     alt={city.name}
                   />
                 </Paper>
