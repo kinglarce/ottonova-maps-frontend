@@ -50,7 +50,11 @@ const App = () => {
             <List cities={cities} />
           </Grid>
           <Grid item xs={12} md={8}>
-            <Map coordinates={coordinates} setCoordinates={setCoordinates} />
+            <Map
+              coordinates={coordinates}
+              setCoordinates={setCoordinates}
+              cities={cities}
+            />
           </Grid>
         </Grid>
       </CssBaseline>
