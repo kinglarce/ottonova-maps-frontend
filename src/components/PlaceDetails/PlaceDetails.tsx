@@ -1,5 +1,5 @@
 import React, { ReactElement, FC } from 'react'
-import { ICity } from '../List/List'
+import { ICity } from '../../interface'
 
 interface PlaceDetailsProps {
   city: ICity

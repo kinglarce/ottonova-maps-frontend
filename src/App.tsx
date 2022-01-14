@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 import {
   CssBaseline,
@@ -12,6 +12,9 @@ import Header from './components/Header/Header'
 import List from './components/List/List'
 import Map from './components/Map/Map'
 
+import { getCities } from './api'
+import { ICity, ICoordinates } from './interface'
+
 const theme = createTheme({
   palette: {
     primary: {
@@ -21,7 +24,23 @@ const theme = createTheme({
   }
 })
 
-function App () {
+const App = () => {
+  const [, setCities] = useState<ICity[] | undefined>([])
+  const [coordinates, setCoordinates] = useState<ICoordinates>({
+    lat: 0,
+    lng: 0
+  })
+
+  useEffect(() => {
+    getCities().then((response: ICity[] | undefined) => {
+      setCities(response)
+      setCoordinates({
+        lat: Number(response![0].latitude),
+        lng: Number(response![0].longitude)
+      })
+    })
+  }, [])
+
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline>
@@ -31,7 +50,7 @@ function App () {
             <List />
           </Grid>
           <Grid item xs={12} md={8}>
-            <Map />
+            <Map coordinates={coordinates} setCoordinates={setCoordinates} />
           </Grid>
         </Grid>
       </CssBaseline>

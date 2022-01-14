@@ -8,41 +8,15 @@ import {
   Select
 } from '@material-ui/core'
 import PlaceDetails from '../PlaceDetails/PlaceDetails'
+import { ICity } from '../../interface'
 
 import useStyles from './styles'
-
-export interface ICity {
-  name: string
-  country: string
-  continent: string
-}
 
 const List: FC = (): ReactElement => {
   const classes = useStyles()
   const [continent, setContinent] = useState<string>('')
   const continents: string[] = ['Europe', 'Australia']
-  const cities: ICity[] = [
-    {
-      name: 'Sydney',
-      country: 'Australia',
-      continent: 'Australia'
-    },
-    {
-      name: 'New York City',
-      country: 'USA',
-      continent: 'North America'
-    },
-    {
-      name: 'Madrid',
-      country: 'Spain',
-      continent: 'Europe'
-    },
-    {
-      name: 'Moscow',
-      country: 'Russia',
-      continent: 'Europe'
-    }
-  ]
+  const cities: ICity[] | [] = []
 
   return (
     <div className={classes.container}>
