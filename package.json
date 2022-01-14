@@ -29,7 +29,7 @@
     "eject": "react-scripts eject",
     "lint": "eslint src --ext .ts,.tsx",
     "lint:fix": "eslint src --ext .ts,.tsx --fix",
-    "format": "prettier --write \"**/*.+(ts|tsx|json)\""
+    "format": "prettier --write \"**/*.+(ts|tsx|json)\" && npm run lint:fix"
   },
   "browserslist": {
     "production": [
