@@ -9,6 +9,7 @@ import GoogleMapReact from 'google-map-react'
 import { Paper, Typography, useMediaQuery } from '@material-ui/core'
 import LocationOnOutlineIcon from '@material-ui/icons/LocationOnOutlined'
 import { ICity, ICoordinates } from '../../interface'
+import Delayed from './Delayed'
 
 import useStyles from './styles'
 
@@ -37,47 +38,49 @@ const Map: FC<MapProps> = ({
   const isDesktop = useMediaQuery('(min-width:600px)')
 
   return (
-    <div className={classes.mapContainer}>
-      <GoogleMapReact
-        bootstrapURLKeys={{ key: API_KEY }}
-        defaultCenter={coordinates}
-        center={coordinates}
-        defaultZoom={14}
-        margin={[50, 50, 50, 50]}
-        onChange={(e) =>
-          setCoordinates({
-            lat: Number(e.center.lat),
-            lng: Number(e.center.lng)
-          })
-        }
-      >
-        {cities?.map((city, i) => (
-          <div
-            key={i}
-            className={classes.markerContainer}
-            lat={Number(city.latitude)}
-            lng={Number(city.longitude)}
-          >
-            {!isDesktop
-              ? (
-              <LocationOnOutlineIcon color="primary" fontSize="large" />
-                )
-              : (
-              <Paper elevation={3} className={classes.paper}>
-                <Typography variant="subtitle2" gutterBottom>
-                  {city.name}
-                </Typography>
-                <img
-                  className={classes.pointer}
-                  src="/sample-card-image.jpg"
-                  alt={city.name}
-                />
-              </Paper>
-                )}
-          </div>
-        ))}
-      </GoogleMapReact>
-    </div>
+    <Delayed>
+      <div className={classes.mapContainer}>
+        <GoogleMapReact
+          bootstrapURLKeys={{ key: API_KEY }}
+          defaultCenter={coordinates}
+          center={coordinates}
+          defaultZoom={14}
+          margin={[50, 50, 50, 50]}
+          onChange={(e) =>
+            setCoordinates({
+              lat: Number(e.center.lat),
+              lng: Number(e.center.lng)
+            })
+          }
+        >
+          {cities?.map((city, i) => (
+            <div
+              key={i}
+              className={classes.markerContainer}
+              lat={Number(city.latitude)}
+              lng={Number(city.longitude)}
+            >
+              {!isDesktop
+                ? (
+                <LocationOnOutlineIcon color="primary" fontSize="large" />
+                  )
+                : (
+                <Paper elevation={3} className={classes.paper}>
+                  <Typography variant="subtitle2" gutterBottom>
+                    {city.name}
+                  </Typography>
+                  <img
+                    className={classes.pointer}
+                    src="/sample-card-image.jpg"
+                    alt={city.name}
+                  />
+                </Paper>
+                  )}
+            </div>
+          ))}
+        </GoogleMapReact>
+      </div>
+    </Delayed>
   )
 }
 
