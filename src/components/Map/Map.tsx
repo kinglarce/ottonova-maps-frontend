@@ -13,12 +13,14 @@ import Delayed from './Delayed'
 
 import useStyles from './styles'
 
-const googleMapApiKey: string = (process.env.REACT_APP_GOOGLE_MAPS_API_KEY as string)
+const googleMapApiKey: string = process.env
+  .REACT_APP_GOOGLE_MAPS_API_KEY as string
 
 interface MapProps {
   coordinates: ICoordinates
   setCoordinates: Dispatch<React.SetStateAction<ICoordinates>>
   cities: ICity[]
+  isLoading: boolean
 }
 
 declare module 'react' {
@@ -32,13 +34,14 @@ declare module 'react' {
 const Map: FC<MapProps> = ({
   coordinates,
   setCoordinates,
-  cities
+  cities,
+  isLoading
 }): ReactElement => {
   const classes = useStyles()
   const isDesktop = useMediaQuery('(min-width:600px)')
 
   return (
-    <Delayed>
+    <Delayed isLoading={isLoading}>
       <div className={classes.mapContainer}>
         <GoogleMapReact
           bootstrapURLKeys={{ key: googleMapApiKey }}

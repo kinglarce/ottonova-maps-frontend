@@ -71,6 +71,7 @@ const App = () => {
               coordinates={coordinates}
               setCoordinates={setCoordinates}
               cities={cities}
+              isLoading={isLoading}
             />
           </Grid>
         </Grid>

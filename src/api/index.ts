@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { ICity } from '../interface'
 
-const apiURL: string = (process.env.REACT_APP_API_URL as string)
+const apiURL: string = process.env.REACT_APP_API_URL as string
 
 export const getCities = async (
   continent?: string
