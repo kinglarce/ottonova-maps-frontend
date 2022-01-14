@@ -13,7 +13,7 @@ import Delayed from './Delayed'
 
 import useStyles from './styles'
 
-const API_KEY = 'AIzaSyCOJHqWc6f69wJDwoyUuw7xl2JKcdqVMcA'
+const googleMapApiKey: string = (process.env.REACT_APP_GOOGLE_MAPS_API_KEY as string)
 
 interface MapProps {
   coordinates: ICoordinates
@@ -41,7 +41,7 @@ const Map: FC<MapProps> = ({
     <Delayed>
       <div className={classes.mapContainer}>
         <GoogleMapReact
-          bootstrapURLKeys={{ key: API_KEY }}
+          bootstrapURLKeys={{ key: googleMapApiKey }}
           defaultCenter={coordinates}
           center={coordinates}
           defaultZoom={14}
