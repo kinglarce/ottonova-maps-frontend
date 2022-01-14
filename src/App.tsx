@@ -12,7 +12,7 @@ import Header from './components/Header/Header'
 import List from './components/List/List'
 import Map from './components/Map/Map'
 
-import { getCities } from './api'
+import { getCities, getContinents } from './api'
 import { ICity, ICoordinates } from './interface'
 
 const theme = createTheme({
@@ -30,16 +30,24 @@ const App = () => {
     lat: 0,
     lng: 0
   })
+  const [continents, setContinents] = useState<string[]>([])
+  const [selectedContinent, setSelectedContinent] = useState<string>('')
 
   useEffect(() => {
-    getCities().then((response: ICity[] | undefined) => {
+    getContinents().then((response: string[] | undefined) => {
+      setContinents(response!)
+    })
+  }, [])
+
+  useEffect(() => {
+    getCities(selectedContinent).then((response: ICity[] | undefined) => {
       setCities(response!)
       setCoordinates({
         lat: Number(response![0].latitude),
         lng: Number(response![0].longitude)
       })
     })
-  }, [])
+  }, [selectedContinent])
 
   return (
     <ThemeProvider theme={theme}>
@@ -47,7 +55,12 @@ const App = () => {
         <Header title="Ottonova Tours" />
         <Grid container spacing={3} style={{ width: '100%' }}>
           <Grid item xs={12} md={4}>
-            <List cities={cities} />
+            <List
+              cities={cities}
+              continents={continents}
+              selectedContinent={selectedContinent}
+              setSelectedContinent={setSelectedContinent}
+            />
           </Grid>
           <Grid item xs={12} md={8}>
             <Map

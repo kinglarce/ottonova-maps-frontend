@@ -1,7 +1,6 @@
-import React, { ReactElement, FC, useState } from 'react'
+import React, { ReactElement, FC, Dispatch } from 'react'
 import {
   Grid,
-  Typography,
   InputLabel,
   MenuItem,
   FormControl,
@@ -14,22 +13,30 @@ import useStyles from './styles'
 
 interface ListProps {
   cities: ICity[]
+  continents: string[]
+  selectedContinent: string
+  setSelectedContinent: Dispatch<React.SetStateAction<string>>
 }
 
-const List: FC<ListProps> = ({ cities }): ReactElement => {
+const List: FC<ListProps> = ({
+  cities,
+  continents,
+  selectedContinent,
+  setSelectedContinent
+}): ReactElement => {
   const classes = useStyles()
-  const [continent, setContinent] = useState<string>('')
-  const continents: string[] = ['Europe', 'Australia']
 
   return (
     <div className={classes.container}>
-      <Typography variant="h4">Landmarks Nearby</Typography>
       <FormControl className={classes.formControl}>
         <InputLabel>Continents</InputLabel>
         <Select
-          value={continent}
-          onChange={(e) => setContinent(e.target.value as string)}
+          value={selectedContinent}
+          onChange={(e) => setSelectedContinent(e.target.value as string)}
         >
+          <MenuItem key={-1} value="">
+            All
+          </MenuItem>
           {continents?.map((value: string, i) => (
             <MenuItem key={i} value={value}>
               {value}
