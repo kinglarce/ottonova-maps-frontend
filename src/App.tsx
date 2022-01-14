@@ -25,7 +25,7 @@ const theme = createTheme({
 })
 
 const App = () => {
-  const [, setCities] = useState<ICity[] | undefined>([])
+  const [cities, setCities] = useState<ICity[]>([])
   const [coordinates, setCoordinates] = useState<ICoordinates>({
     lat: 0,
     lng: 0
@@ -33,7 +33,7 @@ const App = () => {
 
   useEffect(() => {
     getCities().then((response: ICity[] | undefined) => {
-      setCities(response)
+      setCities(response!)
       setCoordinates({
         lat: Number(response![0].latitude),
         lng: Number(response![0].longitude)
@@ -47,7 +47,7 @@ const App = () => {
         <Header title="Ottonova Tours" />
         <Grid container spacing={3} style={{ width: '100%' }}>
           <Grid item xs={12} md={4}>
-            <List />
+            <List cities={cities} />
           </Grid>
           <Grid item xs={12} md={8}>
             <Map coordinates={coordinates} setCoordinates={setCoordinates} />

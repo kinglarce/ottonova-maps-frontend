@@ -12,11 +12,14 @@ import { ICity } from '../../interface'
 
 import useStyles from './styles'
 
-const List: FC = (): ReactElement => {
+interface ListProps {
+  cities: ICity[]
+}
+
+const List: FC<ListProps> = ({ cities }): ReactElement => {
   const classes = useStyles()
   const [continent, setContinent] = useState<string>('')
   const continents: string[] = ['Europe', 'Australia']
-  const cities: ICity[] | [] = []
 
   return (
     <div className={classes.container}>
