@@ -2,11 +2,11 @@ import React, { ReactElement, FC } from 'react'
 import { AppBar, Toolbar, Typography } from '@material-ui/core'
 import useStyles from './styles'
 
-interface Props {
+interface HeaderProps {
   title: String
 }
 
-const Header: FC<Props> = ({ title }): ReactElement => {
+const Header: FC<HeaderProps> = ({ title }): ReactElement => {
   const classes = useStyles()
   return (
     <AppBar position="static">
