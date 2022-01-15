@@ -1,46 +1,49 @@
-# Getting Started with Create React App
+# Ottonova Maps Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a react app that displays the frontend fetch from [Ottonova Maps API](https://github.com/kinglarce/ottonova-maps-api).
 
-## Available Scripts
+## Getting started
 
-In the project directory, you can run:
+You can view a live demo over at https://ottonova-maps-frontend.vercel.app/
 
-### `npm start`
+To get the frontend running locally:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- Clone this repo
+  - `git clone https://github.com/kinglarce/ottonova-maps-frontend.git`
+- Install the required dependencies
+  - `npm install`
+- Copy the example environment variable
+  - `.env.example` to `.env`
+- Provide the `REACT_APP_GOOGLE_MAPS_API_KEY` environment variable with your google map API key which you can get from Google Cloud.
+- Start the development server
+  - `npm start`
+- Visit URL
+  - `http://localhost:3000/`
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Requesting backend API
 
-### `npm test`
+The source code for the backend api can be found in the [[Ottonova Maps API](https://github.com/kinglarce/ottonova-maps-api)](https://github.com/kinglarce/ottonova-maps-api).
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+If you want to change the API URL to a different backend server, simply edit `.env` and change `REACT_APP_API_URL` to what you desired.
 
-### `npm run build`
+## Functionality overview
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Fetch Cities and Continents API
+- Display Continents in dropdown for sorting purpose
+- Display Cities in a card list
+- Reflect Cities displayed in card list to Google Maps
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Frontend Structure
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- `src/api` - This folder contains the function for request to our API.
+- `src/index.tsx` - This file is the entry point to our frontend.
+- `src/App.tsx` - This file is the entry point to our components.
+- `src/interface.ts` - This file is where the shared interfaces are placed that are used by the components.
+- `src/components` - This folder contains the components for our frontend.
+  - `Header` - For displaying static header.
+  - `List` - For displaying the list of cities.
+  - `Loading` - For displaying loading component while fetching from the API is in progress.
+  - `Map` - For display the fetching cities to the Google Map.
+  - `CityDetails` - For displaying the city details.
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+<br />
