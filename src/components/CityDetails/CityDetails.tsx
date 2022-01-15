@@ -14,11 +14,11 @@ import { ICity } from '../../interface'
 
 import useStyles from './styles'
 
-interface PlaceDetailsProps {
+interface CityDetailsProps {
   city: ICity
 }
 
-const PlaceDetails: FC<PlaceDetailsProps> = ({ city }): ReactElement => {
+const CityDetails: FC<CityDetailsProps> = ({ city }): ReactElement => {
   const classes = useStyles()
 
   return (
@@ -65,4 +65,4 @@ const PlaceDetails: FC<PlaceDetailsProps> = ({ city }): ReactElement => {
   )
 }
 
-export default PlaceDetails
+export default CityDetails

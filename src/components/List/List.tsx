@@ -6,7 +6,7 @@ import {
   FormControl,
   Select
 } from '@material-ui/core'
-import PlaceDetails from '../PlaceDetails/PlaceDetails'
+import CityDetails from '../CityDetails/CityDetails'
 import Loading from '../Loading/Loading'
 import { ICity } from '../../interface'
 
@@ -51,7 +51,7 @@ const List: FC<ListProps> = ({
         <Grid container spacing={3} className={classes.list}>
           {cities?.map((value, i) => (
             <Grid item key={i} xs={12}>
-              <PlaceDetails city={value} />
+              <CityDetails city={value} />
             </Grid>
           ))}
         </Grid>
