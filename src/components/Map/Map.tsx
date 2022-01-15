@@ -8,8 +8,8 @@ import React, {
 import GoogleMapReact from 'google-map-react'
 import { Paper, Typography, useMediaQuery } from '@material-ui/core'
 import LocationOnOutlineIcon from '@material-ui/icons/LocationOnOutlined'
+import Loading from '../Loading/Loading'
 import { ICity, ICoordinates } from '../../interface'
-import Delayed from './Delayed'
 
 import useStyles from './styles'
 
@@ -41,7 +41,7 @@ const Map: FC<MapProps> = ({
   const isDesktop = useMediaQuery('(min-width:600px)')
 
   return (
-    <Delayed isLoading={isLoading}>
+    <Loading isLoading={isLoading}>
       <div className={classes.mapContainer}>
         <GoogleMapReact
           bootstrapURLKeys={{ key: googleMapApiKey }}
@@ -83,7 +83,7 @@ const Map: FC<MapProps> = ({
           ))}
         </GoogleMapReact>
       </div>
-    </Delayed>
+    </Loading>
   )
 }
 

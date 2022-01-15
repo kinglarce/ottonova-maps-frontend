@@ -1,14 +1,14 @@
-import React, { FC } from 'react'
+import React, { FC, ReactElement } from 'react'
 import { CircularProgress } from '@material-ui/core'
 
 import useStyles from './styles'
 
-interface DelayedProps {
-  children: React.ReactElement
+interface LoadingProps {
+  children: ReactElement
   isLoading: boolean
 }
 
-const Delayed: FC<DelayedProps> = ({ children, isLoading }) => {
+const Loading: FC<LoadingProps> = ({ children, isLoading }): ReactElement => {
   const classes = useStyles()
 
   return isLoading
@@ -22,4 +22,4 @@ const Delayed: FC<DelayedProps> = ({ children, isLoading }) => {
       )
 }
 
-export default Delayed
+export default Loading

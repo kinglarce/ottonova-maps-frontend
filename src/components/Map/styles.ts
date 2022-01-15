@@ -21,11 +21,5 @@ export default makeStyles(() => ({
   },
   pointer: {
     cursor: 'pointer'
-  },
-  loading: {
-    height: '600px',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center'
   }
 }))
